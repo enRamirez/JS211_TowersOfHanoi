@@ -30,26 +30,53 @@ const printStacks = () => {
 }
 
 // Next, what do you think this function should do?
-const movePiece = () => {
-  // Your code here
+const moveStone = (startStack, endStack) => {
+  /**
+   * move a stone from one stack to another
+   * need to know start and end place of the stone, so they should be params  
+   * take the piece from the start stack array and put it on the end stack array
+   * .pop                     and                     .push
+   * 
+   */ 
+
+  let stone = stacks[startStack].pop(); 
+
+  stacks[endStack].push(stone);
 
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
-const isLegal = () => {
-  // Your code here
+const isLegal = (startStack, endStack) => {
+  /**
+   * 1. try to move a stone
+   * 2. check to see if it's legal(small stone on empty stack or larger stone)
+   *    if valid return true else return false
+   *  
+   */
+   
 
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-  // Your code here
+  /**
+   * a win is an array of [4, 3, 2, 1] in either the b or c stack
+   * if yes, return true otherwise return false
+   */
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
-  // Your code here
+  /**
+   * here's where we use all the functions
+   * 1. user enters a start and end stack
+   * 2. check if move is legal. 
+   *  if yes, call moveStone function 
+   *  if no, notify user (console.log in terminal or alert in DOM)
+   * 3. check for win (call the function)
+   *  if yes, then notify user
+   */
 
 }
 
