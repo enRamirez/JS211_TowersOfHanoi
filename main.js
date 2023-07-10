@@ -39,9 +39,13 @@ const moveStone = (startStack, endStack) => {
    * 
    */ 
 
-  let stone = stacks[startStack].pop(); 
+  if (isLegal(startStack, endStack)){
+    let stone = stacks[startStack].pop(); 
+    
+    stacks[endStack].push(stone);
+  }
 
-  stacks[endStack].push(stone);
+
 
 }
 
@@ -49,12 +53,25 @@ const moveStone = (startStack, endStack) => {
 const isLegal = (startStack, endStack) => {
   /**
    * 1. try to move a stone
-   * 2. check to see if it's legal(small stone on empty stack or larger stone)
+   * 2. check to see if it's legal (small stone on empty stack or larger stone)
    *    if valid return true else return false
    *  
    */
    
+  let end = Number(stacks[endStack].slice(-1)) 
+  let start = Number(stacks[startStack].slice(-1)) 
 
+  console.log('end:', end)
+  console.log('start:', start)
+  
+  if (end === 0){
+    return true
+  } else if(start < end){
+    return true
+  } else {
+    console.log("Invalid Input")
+    return false
+  }
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
@@ -63,6 +80,13 @@ const checkForWin = () => {
    * a win is an array of [4, 3, 2, 1] in either the b or c stack
    * if yes, return true otherwise return false
    */
+
+  if (stacks.b.length === 4 || stacks.c.length === 4){
+    console.log("Winner")
+    return true 
+  } else{
+    return false
+  }
 
 }
 
@@ -78,6 +102,9 @@ const towersOfHanoi = (startStack, endStack) => {
    *  if yes, then notify user
    */
 
+  moveStone(startStack, endStack)
+
+  checkForWin()
 }
 
 const getPrompt = () => {
