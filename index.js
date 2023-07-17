@@ -3,29 +3,33 @@
     // of the game as you know it from building it in the terminal. Work through the
     // puzzle slowly, stepping through the flow of logic, and making the game work.
     // Have fun!!
-// * First run the program in your browser with live server and double-click on the row you'd like to select an element from.
+// * First run the program in your bColumnser with live server and double-click on the Column you'd like to select an element from.
 // * Why are you get a warning in your console? Fix it.
+//          Assignment to constant variable.
+//          at pickUpStone (index.js:32:9)
+//          at selectColumn (index.js:25:3)
+//          at HTMLDivElement.onclick ((index):14:90)
 // * Delete these comment lines!
 
 const stone = null
 
-// this function is called when a row is clicked. 
+// this function is called when a Column is clicked. 
 // Open your inspector tool to see what is being captured and can be used.
-const selectRow = (row) => {
-  const currentRow = row.getAttribute("data-row")
+const selectColumn = (column) => {
+  const currentColumn = column.getAttribute("data-Column")
   
-  console.log("Yay, we clicked an item", row)
-  console.log("Here is the stone's id: ", row.id)
-  console.log("Here is the stone's data-size: ", currentRow)
+  console.log("Yay, we clicked an item", column)
+  console.log("Here is the stone's id: ", column.id)
+  console.log("Here is the stone's data-size: ", currentColumn)
 
-  pickUpStone(row.id)
+  pickUpStone(column.id)
 } 
 
 // this function can be called to get the last stone in the stack
 // but there might be something wrong with it...
-const pickUpStone = (rowID) => {
-  const selectedRow = document.getElementById(rowID);
-  stone = selectedRow.removeChild(selectedRow.lastChild);
+const pickUpStone = (columnID) => {
+  const selectedColumn = document.getElementById(columnID);
+  stone = selectedColumn.removeChild(selectedColumn.lastChild);
   console.log(stone)
 }
 
@@ -33,8 +37,8 @@ const pickUpStone = (rowID) => {
 // Once you figure that out you'll need to figure out if its a legal move...
 // Something like: if(!stone){pickupStone} else{dropStone}
 
-const dropStone = (rowID, stone) => {
-  document.getElementById(rowID).appendChild(stone)
+const dropStone = (columnID, stone) => {
+  document.getElementById(columnID).appendChild(stone)
   stone = null
 }
 
