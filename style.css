@@ -1,4 +1,4 @@
-[data-row] {
+[data-column] {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -7,23 +7,23 @@
   border: 1px solid lightgray;
 }
 
-.row {
+.column {
   z-index: -10;
 }
 
-[data-row].red {
+[data-column].red {
   background-color: #f6c5c5;
 }
 
-[data-row].yellow {
+[data-column].yellow {
   background-color: #ffffa9;
 }
 
-[data-row].green {
+[data-column].green {
   background-color: #baf6ba;
 }
 
-[data-row].blue {
+[data-column].blue {
   background-color: aliceblue;
 }
 

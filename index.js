@@ -1,17 +1,4 @@
-// * This js file is incomplete. It will log to the console the elements you click
-    // call another function and set stone. You will have to work through the logic
-    // of the game as you know it from building it in the terminal. Work through the
-    // puzzle slowly, stepping through the flow of logic, and making the game work.
-    // Have fun!!
-// * First run the program in your bColumnser with live server and double-click on the Column you'd like to select an element from.
-// * Why are you get a warning in your console? Fix it.
-//          Assignment to constant variable.
-//          at pickUpStone (index.js:32:9)
-//          at selectColumn (index.js:25:3)
-//          at HTMLDivElement.onclick ((index):14:90)
-// * Delete these comment lines!
-
-const stone = null
+let stone = null
 
 // this function is called when a Column is clicked. 
 // Open your inspector tool to see what is being captured and can be used.
@@ -21,15 +8,21 @@ const selectColumn = (column) => {
   console.log("Yay, we clicked an item", column)
   console.log("Here is the stone's id: ", column.id)
   console.log("Here is the stone's data-size: ", currentColumn)
-
-  pickUpStone(column.id)
+  // if i have a stone in my hand already, i must drop it first
+  // if my hand is empty, then i will need to pick up a stone
+  if (!stone) {
+      pickUpStone(column.id)
+    } else {
+      dropStone(column.id)
+    }
 } 
 
 // this function can be called to get the last stone in the stack
 // but there might be something wrong with it...
 const pickUpStone = (columnID) => {
   const selectedColumn = document.getElementById(columnID);
-  stone = selectedColumn.removeChild(selectedColumn.lastChild);
+  stone = selectedColumn.lastElementChild;
+  selectedColumn.removeChild(stone);
   console.log(stone)
 }
 
